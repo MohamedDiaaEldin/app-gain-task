@@ -1,4 +1,14 @@
+"""
+Authentication and Request Validation Middlewares
 
+This module provides middlewares for authentication and request validation.
+
+Middlewares:
+    - authenticate: Middleware to ensure user authentication.
+    - validate_register_request: Middleware to validate registration requests.
+    - validate_login_request: Middleware to validate login requests.
+
+"""
 
 from functools import wraps
 from flask import request
@@ -7,6 +17,15 @@ from utilities.request_handlers import invalid_request_handler, unauthorized_han
 
 
 def authenticate(f):   
+    """
+    Middleware to ensure user authentication.
+
+    Args:
+        f (function): The route handler function.
+
+    Returns:
+        function: The wrapper function.
+    """
     @wraps(f)
     def is_authenticated(*args, **kwargs):
         user_jwt = request.cookies.get('access_token')
@@ -17,9 +36,18 @@ def authenticate(f):
 
 
 def validate_register_request(func):
+    """
+    Middleware to validate registration requests.
+
+    Args:
+        func (function): The route handler function.
+
+    Returns:
+        function: The wrapper function.
+    """
     @wraps(func)
     def wrapper(*args, **kwargs):
-        # request validation 
+        # Request validation 
         body = request.json
         username = body.get('username')
         email = body.get('email')
@@ -32,15 +60,23 @@ def validate_register_request(func):
     return wrapper
 
 
-
 def validate_login_request(func):
+    """
+    Middleware to validate login requests.
+
+    Args:
+        func (function): The route handler function.
+
+    Returns:
+        function: The wrapper function.
+    """
     @wraps(func)
     def wrapper(*args, **kwargs):
-        # request validation 
+        # Request validation 
         body = request.json
         email = body.get('email')
         password = body.get('password')
-        if not body  or not email or not password:
+        if not body or not email or not password:
             return invalid_request_handler()
         # Call the route handler if the request is valid
         return func(*args, **kwargs)
