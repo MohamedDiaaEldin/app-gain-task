@@ -10,7 +10,8 @@ class Product(db.Model):
     quantity = db.Column(db.Integer)
     price = db.Column(db.Double) 
     # defines the relationships 
+    
     users = relationship('User', secondary='purchases', back_populates='products')
 
     def __repr__(self):
-        return f'<Product Name {self.name}>'
+        return f'<Product Name: {self.name}>'
