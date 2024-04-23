@@ -26,3 +26,9 @@ def server_error_handler(message='Server Error'):
         'message':message
     }), 500
     
+    
+def invalid_request_handler(message='Invalid Request'):
+    return jsonify({
+        'message':message
+    }), 400
+    

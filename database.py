@@ -13,6 +13,9 @@ def configure_with_database(app):
     app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False    
         # 
+
+    app.app_context().push()    
+
     with app.app_context():
         db.init_app(app)   
     

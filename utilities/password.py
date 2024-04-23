@@ -10,9 +10,6 @@ def hash_password(password):
 
 
 def check_password(password, hashed_password): 
-    print(password)
-    print(hashed_password)
-
     try:         
         return  bcrypt.checkpw(password.encode(used_encode), hashed_password.encode(used_encode))   
     except : 

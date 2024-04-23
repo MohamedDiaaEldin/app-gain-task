@@ -6,9 +6,10 @@ from sqlalchemy.orm import relationship
 
 ## association table
 class Purchase(db.Model):
-    __tablename__ = 'purchases' 
-    user_id = db.Column(db.Integer, ForeignKey('users.id'), primary_key=True) 
-    product_id = db.Column(db.Integer, ForeignKey('products.id'), primary_key=True) 
+    __tablename__ = 'purchases'     
+    id = db.Column(db.Integer, primary_key=True) 
+    user_id = db.Column(db.Integer, ForeignKey('users.id')) 
+    product_id = db.Column(db.Integer, ForeignKey('products.id')) 
     cost = db.Column(db.Double, nullable=False)
 
     # defines the relationships 

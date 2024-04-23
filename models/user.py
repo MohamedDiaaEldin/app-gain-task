@@ -13,5 +13,8 @@ class User(db.Model):
     # defines the relationships
     products = relationship('Product', secondary='purchases', back_populates='users')
 
+    @staticmethod
+    def get_user_by_email(email): 
+        return db.session.query(User).filter(User.email == email).first()
     def __repr__(self):
         return f'<User: {self.username}>'
