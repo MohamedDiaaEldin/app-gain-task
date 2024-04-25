@@ -10,11 +10,11 @@ COPY . /app
 # Install any needed dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 8000 available to the world outside this container
-EXPOSE 8000
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
 
 # Define environment variable
-ENV ENVIRONMENT production
+ENV FLASK_APP main
 
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+# Run main.py when the container launches
+CMD ["python3", "main.py"]

@@ -42,13 +42,18 @@ git clone https://github.com/MohamedDiaaEldin/app-gian-task.git
     ```
     chmod +x ./scripts/run_database.sh
     ./scripts/run_database.sh
-
+    
    ```
 7. **Define App Variable:**
     ```
     export FLASK_APP=main
     ```
-8. **Run Migration:**
+8. **Add Initial Data:**
+    ```
+    python3 add_data.py
+    ```
+
+9. **Run Migration:**
     ```
     flask db upgrade
     ```
@@ -63,6 +68,16 @@ git clone https://github.com/MohamedDiaaEldin/app-gian-task.git
 2. **Access the application:**
 Open a web browser and go to [http://localhost:5000](http://localhost:5000)
 
+## Docker
+You can also run this Flask application using Docker.
+
+1. **Clone Docker Hub Registry:**
+    https://hub.docker.com/repository/docker/mohameddiaaeldin/app-gain-task
+
+2. **Run Docker Image**
+    ```
+    docker run -p 5000:5000 --net="host" app-gain-image
+    ```
 ## Structure
 The project structure is organized as follows:
 - **main.py**: Main Flask application file.
@@ -77,3 +92,6 @@ The project structure is organized as follows:
 - **requirements.txt**: List of Python dependencies.
 - **add_data.txt**: Initial data for pre-populating the database..
 - **appgain-task.postman_collection.json**: Postman collection containing endpoints.
+
+
+2. **Docker:**
