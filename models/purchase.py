@@ -13,7 +13,6 @@ Attributes:
     - cost: Cost of the purchase.
 
 """
-
 from sqlalchemy import ForeignKey
 from database import db
 
@@ -32,6 +31,10 @@ class Purchase(db.Model):
     user_id = db.Column(db.Integer, ForeignKey('users.id')) 
     product_id = db.Column(db.Integer, ForeignKey('products.id')) 
     cost = db.Column(db.Float, nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+
+    paid = db.Column(db.Boolean, default=False)
+    
 
     def __repr__(self):
         """

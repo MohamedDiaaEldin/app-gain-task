@@ -48,5 +48,6 @@ def configure_with_database(app):
     from models.user import User 
     from models.product import Product 
     from models.purchase import Purchase
+    from models.user_account import UserAcount
 
     return app

@@ -28,8 +28,11 @@ def validate_order_request(func):
         body = request.json
         product_id = body.get('product_id')
         quantity = body.get('quantity')
+        card_number = body.get('card_number')
+        exp_date = body.get('exp_date')
+        csv = body.get('csv') 
 
-        if not body or not product_id or not quantity:
+        if not body or not product_id or not quantity or not card_number or not exp_date or not csv :
             return invalid_request_handler()
         
         # Call the route handler if the request is valid

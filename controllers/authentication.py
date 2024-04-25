@@ -39,7 +39,7 @@ def register_user():
             return conflict_handler()
 
         hashed_password = hash_password(body.get('password'))
-        new_user = User(username=body.get('username'), email=body.get('email'), address=body.get('email'), password=hashed_password)
+        new_user = User(username=body.get('username'), email=body.get('email'), address=body.get('address'), password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
         return success_handler()

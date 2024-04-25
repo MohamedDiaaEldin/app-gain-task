@@ -16,7 +16,7 @@ from utilities.jwt_generator import is_valid_jwt
 from utilities.request_handlers import invalid_request_handler, unauthorized_handler
 
 
-def authenticate(f):   
+def authenticate(func):   
     """
     Middleware to ensure user authentication.
 
@@ -26,13 +26,16 @@ def authenticate(f):
     Returns:
         function: The wrapper function.
     """
-    @wraps(f)
-    def is_authenticated(*args, **kwargs):
-        user_jwt = request.cookies.get('access_token')
-        if not (user_jwt and is_valid_jwt(user_jwt)):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        # Request validation 
+        access_token = request.cookies.get('access_token')
+        if not access_token or not is_valid_jwt(access_token):
             return unauthorized_handler()
-        return f(*args, **kwargs)
-    return is_authenticated
+        # Call the route handler if the request is valid
+        return func(*args, **kwargs)
+    return wrapper
+
 
 
 def validate_register_request(func):
