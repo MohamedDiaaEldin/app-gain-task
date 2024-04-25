@@ -93,5 +93,3 @@ The project structure is organized as follows:
 - **add_data.txt**: Initial data for pre-populating the database..
 - **appgain-task.postman_collection.json**: Postman collection containing endpoints.
 
-
-2. **Docker:**
