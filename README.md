@@ -68,6 +68,80 @@ git clone https://github.com/MohamedDiaaEldin/app-gian-task.git
 2. **Access the application:**
 Open a web browser and go to [http://localhost:5000](http://localhost:5000)
 
+
+
+# Flask App API Documentation
+
+## Endpoints
+
+### 1. /register (POST)
+
+Registers a new user with the provided information.
+
+#### Request Body
+```json
+{
+    "username": "string",
+    "email": "string",
+    "address": "string",
+    "password": "string"
+}
+```
+#### Responses
+- 409 Conflict: If a user with the provided email already exists.
+- 200 OK: If the registration is successful.
+- 500 Internal Server Error: If a server error occurs.
+
+### 2. /login (POST)
+Logs in a user with the provided credentials and sets an access token in the cookies.
+
+
+#### Request Body
+```json
+{
+    "email": "string",
+    "password": "string"
+}
+```
+#### Responses
+- 404 Not Found: If the user with the provided email is not found.
+- 401 Unauthorized: If the provided password is incorrect.
+- 200 OK: If the login is successful.
+- 500 Internal Server Error: If a server error occurs.
+
+### 3. /order (POST)
+Places an order for a product with the provided information.
+
+
+#### Request Body
+```json
+{
+    "product_id": 656,
+    "quantity": 2,
+    "card_number": 45656464655,
+    "exp_date": "11/25",
+    "csv": 987
+}
+```
+#### Responses
+- 404 Not Found: If the product is not found or the quantity is not available.
+- 401 Unauthorized: If the user is deleted from the database . 
+- 500 Internal Server Error: If there are issues with the payment server or our backend.
+- 200 OK: If the order is successfully placed.
+
+### 4. /logout (GET)
+Deletes Access Token from the Cookies 
+
+
+### EndPoint Usage 
+- Check [postman collection](./appgain-task.postman_collection.json)
+
+
+
+
+
+
+
 ## Docker
 You can also run this Flask application using Docker.
 
