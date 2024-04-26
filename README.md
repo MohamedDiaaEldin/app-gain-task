@@ -64,9 +64,10 @@ git clone https://github.com/MohamedDiaaEldin/app-gian-task.git
     ```
 
 2. **Access the application:**
-- Local : Open Postman Collection and go to local folder [postman collection](./appgain-task.postman_collection.json) in order to use the API
 
-- Online Access deployed on Render: You can access the API at the following URL:
+***- Local Access*** : Open Postman Collection and go to local folder [postman collection](./appgain-task.postman_collection.json) in order to use the API
+
+***- Online Access*** deployed on Render: You can access the API at the following URL:
 [API Endpoint](https://app-gain-task.onrender.com/).  Open Postman Collection and go to production folder [postman collection](./appgain-task.postman_collection.json) 
 
 
