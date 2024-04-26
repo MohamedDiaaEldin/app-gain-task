@@ -19,6 +19,11 @@ from utilities.read_env import get_env
 app = Flask(__name__)
 app = configure_with_database(app)
 
+
+@app.route('/', methods=['GET'])
+def index(): 
+    return 'ok'
+
 @app.route('/register', methods=['POST'])
 def signup():
     """
