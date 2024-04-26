@@ -65,4 +65,4 @@ def order():
     return product_controller.order()
 
 if __name__ == '__main__':
-    app.run(debug=True, port= get_env('PORT') or 5000)
+    app.run(debug=True, host='0.0.0.0' port= get_env('PORT') or 5000)
