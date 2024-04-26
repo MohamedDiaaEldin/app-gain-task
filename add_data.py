@@ -42,7 +42,7 @@ users = [
         'card_number':654564651235645 , 
         'exp_date':'11/25', 
         'csv' : 654 , 
-        'balance': 100000
+        'balance': 10000000
     }
 ]
 
