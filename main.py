@@ -14,6 +14,7 @@ Routes:
 from flask import Flask
 from database import configure_with_database
 from controllers import authentication, product_controller
+from utilities.read_env import get_env
 
 app = Flask(__name__)
 app = configure_with_database(app)
@@ -59,4 +60,4 @@ def order():
     return product_controller.order()
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port= get_env('PORT') or 5000)
